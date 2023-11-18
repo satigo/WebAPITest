@@ -1,0 +1,73 @@
+﻿@model List<Conf_EncuestaModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Encuestas
+    </div>
+    <div class="card-body">
+        
+        <a asp-action="Conf_Encuesta" asp-controller="Home" asp-route-id_conf="0" class="btn btn-primary">Nueva Encuesta</a>
+        </hr>
+        @if (Model != null)
+        {
+            <table class ="table" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>                    
+                        <th>Estado</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+
+                    {
+                        <tr>                
+                            <td>@item.Id_encuesta</td>    
+                            <td>@item.Nombre_encuesta</td>
+                            <td>@item.Descripcion_Encuesta</td>                    
+                            <td>@if (item.Estado == true)
+                                {
+                                    <span> Activa</span>
+                                }
+                                else
+                                {
+                                    <span>Inactiva</span>
+                                }
+                            </td>
+                            <td>
+                                @if (item.Estado == true)
+                                {
+                                    <a asp-action="Conf_Encuesta" asp-controller="Home" asp-route-id_conf="@item.Id_encuesta" class="btn btn-primary btn-sm">Editar</a>
+                                    <a asp-action="Eliminar" asp-controller="Home" asp-route-id_conf="@item.Id_encuesta" class="btn btn-danger btn-sm">Eliminar</a>
+                                    <a asp-action="Index" asp-controller="Conf_Encuesta" asp-route-id_conf="@item.Id_encuesta" class="btn btn-secondary btn-sm">Ver Campos</a>
+                                }
+                            </td>
+                    </tr>
+
+
+                }
+
+            </tbody>
+
+                </table>
+        }
+        else
+        {
+            
+        <h1> NO HAY REGISTROS </h1>
+        }
+
+    </div>
+</div>

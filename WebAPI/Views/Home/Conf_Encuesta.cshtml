@@ -1,0 +1,42 @@
+﻿@model Conf_EncuestaModel
+
+@{
+    ViewData["Title"] = "Conf_Encuesta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewBag.Accion</h1>
+
+<div class="card">
+    <div class="card-header">
+        Encuestas
+    </div>
+    <div class="card-body">
+
+        <form asp-action="Create" asp-controller="Home" method="post">
+            <input asp-for="Id_encuesta" type="hidden"/>
+            <div class="mb-2">
+                <label class="form-label">Nombre Encuesta</label>
+                <input type="text" class="form-control form-control-sm" asp-for="Nombre_encuesta" />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Descripcion: </label>
+                <input type="text" class="form-control form-control-sm" asp-for="Descripcion_Encuesta" />
+            </div>            
+
+            <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+            <a asp-action="Index" asp-controller="Home" class="btn btn-warning btn-sm"> Volver a la lista.</a>
+
+
+        </form>
+        
+        </hr>
+
+        
+
+
+    </div>
+</div>
+
+
